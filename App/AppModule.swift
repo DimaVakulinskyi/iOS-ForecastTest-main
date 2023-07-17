@@ -13,6 +13,7 @@ public class AppModule: Module {
     }
 
     public func registerServices() {
+        GlobalContainer.defaultContainer.register(ForecastService.self) { _ in ForecastService() }
         GlobalContainer.defaultContainer.register(ForecastNetworkService.self) { _ in ForecastNetworkServiceImpl() }
     }
 }

@@ -11,7 +11,7 @@ import GlobalUI
 class ListViewController: UIViewController {
 
     private var viewModel: ListViewModel
-    private let tableView = UITableView.useConstraint
+    private let tableView = TableView.useConstraint
 
     public init(viewModel: ListViewModel) {
         self.viewModel = viewModel
@@ -35,9 +35,7 @@ class ListViewController: UIViewController {
     }
 
     private func configure() {
-        tableView.register(ListCell.self, forCellReuseIdentifier: "\(ListCell.self)")
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.configure(sections: viewModel.datas)
         tableView.backgroundColor = GlobalColor.backgroundColor
     }
 
@@ -49,16 +47,5 @@ class ListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         navigationController?.navigationBar.prefersLargeTitles = false
-    }
-}
-
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: configure cell
-        return UITableViewCell()
     }
 }

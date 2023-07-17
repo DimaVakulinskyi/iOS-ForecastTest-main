@@ -12,7 +12,14 @@ class ListViewModel {
     @Inject var service: ForecastService
     private var bag = Set<AnyCancellable>()
 
-    var items: [ForecastItem] = []
+    var datas = CurrentValueSubject<[TableViewSection], Never>([])
+    
+    private(set) var viewDataList = [TableViewData]() {
+        didSet {
+            self.datas.send([TableViewSection(identifier: "section",
+                                              datas: self.viewDataList)])
+        }
+    }
 
     var showDetail: ((ForecastItem) -> Void)?
 
@@ -21,7 +28,28 @@ class ListViewModel {
     init() {
         service.items
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.items = $0 }
+            .sink { [weak self] in self?.createSection($0) }
             .store(in: &bag)
-    }  
+    }
+
+    private func createSection(_ items: ForecastItems) {
+        let datas: [TableViewData] = items.map {
+            ForecastItemData(forecastItem: $0)
+                .set(trailingActions: [self.trailingAction(item: $0)])
+                .set(separator: .full)
+                .set(separatorColor: .lightGray)
+                .did { [weak self] data in
+                    guard let self = self else { return }
+                    guard let cellData = data as? ForecastItemData else { return }
+                    self.showDetail?(cellData.forecastItem)
+                }
+        }
+        viewDataList = datas
+    }
+
+    private func trailingAction(item: ForecastItem) -> TableViewContextualAction {
+        return TableViewContextualAction(title: "Delete", style: .destructive, backgroundColor: .red) { item in
+            item.remove(to: &self.viewDataList)
+        }
+    }
 }
