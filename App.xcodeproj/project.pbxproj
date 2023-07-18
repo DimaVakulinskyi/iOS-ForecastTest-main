@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0403DA2A668ABE00223F82 /* mockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D0403D92A668ABE00223F82 /* mockData.json */; };
 		3D65F0F62A65E0670040D85C /* ForecastItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D65F0F52A65E0670040D85C /* ForecastItemData.swift */; };
 		4A925F28280582DD0021096B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ADACE4C28041D6800706AD5 /* Assets.xcassets */; };
 		4AA546D72804269400BCE871 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA546D42804269400BCE871 /* TableViewDelegate.swift */; };
@@ -105,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D0403D92A668ABE00223F82 /* mockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockData.json; sourceTree = "<group>"; };
 		3D65F0F52A65E0670040D85C /* ForecastItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastItemData.swift; sourceTree = "<group>"; };
 		4AA546D42804269400BCE871 /* TableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		4AA546D52804269400BCE871 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				4AA5470328045ADA00BCE871 /* ForecastNetworkService.swift */,
 				4AA5470528045BBB00BCE871 /* ForecastNetworkServiceImpl.swift */,
 				4AA5470928045C9F00BCE871 /* ForecastItemDTO.swift */,
+				3D0403D92A668ABE00223F82 /* mockData.json */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D0403DA2A668ABE00223F82 /* mockData.json in Resources */,
 				4ADACE5028041D6800706AD5 /* LaunchScreen.storyboard in Resources */,
 				4ADACE4D28041D6800706AD5 /* Assets.xcassets in Resources */,
 			);
